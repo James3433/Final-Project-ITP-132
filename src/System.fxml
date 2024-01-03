@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1287.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SystemController">
+    <left>
+        <AnchorPane prefHeight="713.0" prefWidth="178.0" style="-fx-background-color: #1e90ff;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fx:id="user" layoutX="29.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                    <font>
+                        <Font name="Arial" size="18.0" />
+                    </font>
+                </Text>
+                <ImageView fitHeight="57.0" fitWidth="77.0" layoutX="62.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Pictures/user.png" />
+                    </image>
+                </ImageView>
+                <ToggleButton fx:id="equip_button" layoutX="16.0" layoutY="260.0" mnemonicParsing="false" onAction="#switch_mode" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #1e90ff; -fx-border-color: white; -fx-text-fill: white;" text="Equipment">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </ToggleButton>
+                <ToggleButton fx:id="status_button" layoutX="15.0" layoutY="329.0" mnemonicParsing="false" onAction="#switch_mode" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #1e90ff; -fx-border-color: white; -fx-text-fill: white;" text="Status">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </ToggleButton>
+            <Button fx:id="log_out" layoutX="59.0" layoutY="527.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #1e90ff; -fx-border-color: white; -fx-text-fill: white;" text="Log Out" />
+            <ToggleButton fx:id="emp_button" layoutX="16.0" layoutY="390.0" mnemonicParsing="false" onAction="#switch_mode" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-border-color: white;" text="Employee">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="flowchart_button" layoutX="16.0" layoutY="196.0" mnemonicParsing="false" onAction="#switch_mode" prefHeight="36.0" prefWidth="148.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-border-color: white;" text="Flow Chart">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="room_button" layoutX="15.0" layoutY="451.0" mnemonicParsing="false" onAction="#switch_mode" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-border-color: white;" text="Room">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </ToggleButton>
+            </children>
+        </AnchorPane>
+    </left>
+   <right>
+      <AnchorPane prefHeight="782.0" prefWidth="1172.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="status" layoutX="15.0" prefHeight="714.0" prefWidth="1095.0" visible="false">
+               <children>
+                  <Text layoutX="294.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAVAO ORIENTAL STATE UNIVERSITY" wrappingWidth="560.953125">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="421.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(INVENTORY STATUS)" wrappingWidth="226.953125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="107.0" fitWidth="124.0" layoutX="153.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pictures/logo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="status_table_view" layoutX="10.0" layoutY="189.0" prefHeight="464.0" prefWidth="1092.0">
+                    <columns>
+                        <TableColumn fx:id="status_id_view" prefWidth="51.0" text="No#" />
+                        <TableColumn fx:id="equip_id_view1" prefWidth="60.0" text="Equip_ID" />
+                        <TableColumn fx:id="property_num_view1" prefWidth="113.0" text="Property_No#" />
+                        <TableColumn fx:id="par_num_view1" prefWidth="106.0" text="PAR #" />
+                        <TableColumn fx:id="equip_name_view1" prefWidth="124.0" text="Equip Name" />
+                        <TableColumn fx:id="equip_desc_view1" prefWidth="118.0" text="Equip Description" />
+                        <TableColumn fx:id="room_view1" prefWidth="60.0" text="Room" />
+                        <TableColumn fx:id="status_view1" prefWidth="108.0" text="Status" />
+                        <TableColumn fx:id="emp_in_charge_view2" prefWidth="116.0" text="Emp in Charge" />
+                        <TableColumn fx:id="date_view" prefWidth="126.0" text="Physical Date" />
+                        <TableColumn fx:id="user_view" prefWidth="109.0" text="User" />
+                    </columns>
+                  </TableView>
+                  <ImageView fx:id="image_view1" fitHeight="146.0" fitWidth="153.0" layoutX="37.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="search" layoutX="217.0" layoutY="156.0" prefHeight="25.0" prefWidth="219.0" promptText="search" />
+                  <ChoiceBox fx:id="search_status" layoutX="505.0" layoutY="156.0" prefHeight="25.0" prefWidth="107.0" />
+                  <Text layoutX="542.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="equipments" layoutX="15.0" prefHeight="714.0" prefWidth="1095.0" visible="false">
+               <children>
+                  <Text layoutX="297.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAVAO ORIENTAL STATE UNIVERSITY" wrappingWidth="562.953125">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="411.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(INVENTORY EQUIPMENT)" wrappingWidth="262.953125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="104.0" fitWidth="163.0" layoutX="158.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pictures/logo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="invent_table_view" layoutX="7.0" layoutY="169.0" prefHeight="402.0" prefWidth="1096.0">
+                    <columns>
+                      <TableColumn fx:id="equip_id_view" prefWidth="61.0" text="Equip_ID" />
+                        <TableColumn fx:id="property_num_view" prefWidth="105.0" text="Property No#" />
+                        <TableColumn fx:id="par_num_view" prefWidth="115.0" text="PAR #" />
+                      <TableColumn fx:id="equip_name_view" prefWidth="113.0" text="Equip_Name" />
+                        <TableColumn fx:id="equip_desc_view" prefWidth="112.0" text="Equip_Description" />
+                        <TableColumn fx:id="room_view" prefWidth="53.0" text="Room" />
+                        <TableColumn fx:id="equip_used_view" prefWidth="108.0" text="Equip_Used" />
+                        <TableColumn fx:id="equip_user_view" prefWidth="90.0" text="Equip_User" />
+                        <TableColumn fx:id="amount_view" prefWidth="71.0" text="Amount" />
+                        <TableColumn fx:id="category_view" prefWidth="61.0" text="Category" />
+                        <TableColumn fx:id="emp_in_charge_view" prefWidth="123.0" text="Emp in Charge" />
+                        <TableColumn fx:id="status_view" prefWidth="83.0" text="Status" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="edit" layoutX="950.0" layoutY="625.0" mnemonicParsing="false" onAction="#editEquipment" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: #62a1f5; -fx-text-fill: white;" text="EDIT STATUS">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="input_equip_id" editable="false" layoutX="30.0" layoutY="617.0" prefHeight="25.0" prefWidth="116.0" />
+                  <TextField fx:id="input_equip_used" layoutX="489.0" layoutY="669.0" prefHeight="25.0" prefWidth="129.0" />
+                  <TextField fx:id="input_equip_name" layoutX="30.0" layoutY="669.0" />
+                  <Text layoutX="52.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment ID" />
+                  <Text layoutX="58.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Name" />
+                  <Text layoutX="510.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Used" />
+                  <TextField fx:id="input_equip_user" layoutX="356.0" layoutY="669.0" prefHeight="25.0" prefWidth="129.0" />
+                  <Text layoutX="378.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment User" />
+                  <ChoiceBox fx:id="input_room" layoutX="798.0" layoutY="617.0" prefHeight="25.0" prefWidth="100.0" />
+                  <ChoiceBox fx:id="input_emp_in_charge" layoutX="751.0" layoutY="669.0" prefHeight="25.0" prefWidth="145.0" />
+                  <TextField fx:id="input_date_and_time" editable="false" layoutX="500.0" layoutY="617.0" prefHeight="25.0" prefWidth="176.0" />
+                  <Text layoutX="539.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date and Time" />
+                  <Text layoutX="832.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room" />
+                  <Text layoutX="771.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee in Charge" />
+                  <Button fx:id="add" layoutX="965.0" layoutY="583.0" mnemonicParsing="false" onAction="#addEquipment" prefHeight="36.0" prefWidth="106.0" style="-fx-background-color: #62a1f5; -fx-text-fill: white;" text="ADD">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="input_category" layoutX="688.0" layoutY="617.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Text layoutX="708.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+                  <Button fx:id="edit_name" layoutX="950.0" layoutY="665.0" mnemonicParsing="false" onAction="#editEquipmentName" prefHeight="29.0" prefWidth="137.0" style="-fx-background-color: #62a1f5; -fx-text-fill: white;" text="EDIT NAME">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="input_property_num" layoutX="166.0" layoutY="617.0" />
+                  <TextField fx:id="input_par_num" layoutX="337.0" layoutY="617.0" />
+                  <Text layoutX="205.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property No#" />
+                  <Text layoutX="395.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAR #" />
+                  <TextField fx:id="search1" layoutX="190.0" layoutY="139.0" prefHeight="25.0" prefWidth="250.0" promptText="Search" />
+                  <TextField fx:id="input_amount" layoutX="624.0" layoutY="669.0" prefHeight="25.0" prefWidth="105.0" />
+                  <Text layoutX="655.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
+                  <TextField fx:id="input_equip_desc" layoutX="195.0" layoutY="669.0" prefHeight="2.0" prefWidth="149.0" />
+                  <Text layoutX="209.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Description" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="employee" layoutX="15.0" prefHeight="714.0" prefWidth="1095.0">
+               <children>
+                  <Text layoutX="299.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAVAO ORIENTAL STATE UNIVERSITY" wrappingWidth="562.953125">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="418.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(EMPLOYEES ON DUTY)" wrappingWidth="235.953125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="142.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pictures/logo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="emp_table_view" layoutX="9.0" layoutY="169.0" prefHeight="380.0" prefWidth="587.0">
+                    <columns>
+                      <TableColumn fx:id="emp_id_view" prefWidth="74.0" text="Employee Id" />
+                      <TableColumn fx:id="emp_name_view" prefWidth="168.0" text="Employee Name" />
+                        <TableColumn fx:id="emp_age_view" prefWidth="41.0" text="Age" />
+                        <TableColumn fx:id="emp_gender_view" prefWidth="62.0" text="Gender" />
+                        <TableColumn fx:id="emp_type_view" prefWidth="95.0" text="Employee Type" />
+                        <TableColumn fx:id="emp_equip_guard_view" prefWidth="64.0" text="# of Equip" />
+                        <TableColumn fx:id="emp_status_view" prefWidth="81.0" text="Status" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="input_emp_id" editable="false" layoutX="51.0" layoutY="595.0" prefHeight="25.0" prefWidth="100.0" />
+                  <TextField fx:id="input_emp_fname" layoutX="170.0" layoutY="595.0" prefHeight="25.0" prefWidth="145.0" />
+                  <TextField fx:id="input_emp_lname" layoutX="492.0" layoutY="595.0" prefHeight="25.0" prefWidth="145.0" />
+                  <TextField fx:id="input_emp_mname" layoutX="332.0" layoutY="595.0" prefHeight="25.0" prefWidth="145.0" />
+                  <Text layoutX="68.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID" />
+                  <Text layoutX="214.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+                  <Text layoutX="369.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Middle Name" />
+                  <Text layoutX="537.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+                  <Text layoutX="83.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Type" />
+                  <ChoiceBox fx:id="input_emp_sufix" layoutX="310.0" layoutY="647.0" prefHeight="25.0" prefWidth="81.0" />
+                  <Text layoutX="336.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suffix" />
+                  <ChoiceBox fx:id="input_emp_gender" layoutX="401.0" layoutY="648.0" prefHeight="25.0" prefWidth="98.0" />
+                  <Text layoutX="431.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" />
+                  <TextField fx:id="input_emp_age" layoutX="220.0" layoutY="648.0" prefHeight="25.0" prefWidth="64.0" />
+                  <Text layoutX="241.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" />
+                  <Button fx:id="add_emp" layoutX="686.0" layoutY="589.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="ADD">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="edit_emp" layoutX="686.0" layoutY="642.0" mnemonicParsing="false" onAction="#editEmployee" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="EDIT">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="input_emp_status" layoutX="524.0" layoutY="647.0" prefHeight="25.0" prefWidth="113.0" />
+                  <Text layoutX="564.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+                  <TextField fx:id="search2" layoutX="142.0" layoutY="141.0" prefHeight="25.0" prefWidth="240.0" promptText="Search" />
+                  <TableView fx:id="equip_table_showm" layoutX="600.0" layoutY="169.0" prefHeight="381.0" prefWidth="289.0">
+                    <columns>
+                      <TableColumn fx:id="equip_id_shown" prefWidth="61.0" text="Equip ID" />
+                      <TableColumn fx:id="equip_name_shown" prefWidth="115.0" text="Equip Name" />
+                        <TableColumn fx:id="equip_desc_shown" prefWidth="112.0" text="Equip Description" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="equip_room_table" layoutX="896.0" layoutY="75.0" prefHeight="158.0" prefWidth="204.0">
+                    <columns>
+                      <TableColumn fx:id="room_view2" prefWidth="75.0" text="Room" />
+                      <TableColumn fx:id="equip_num_view1" prefWidth="126.0" text="# of Equipments " />
+                    </columns>
+                  </TableView>
+                  <TextArea fx:id="equip_room_show" layoutX="896.0" layoutY="233.0" prefHeight="120.0" prefWidth="205.0" />
+                  <TableView fx:id="category_table_view" layoutX="896.0" layoutY="366.0" prefHeight="163.0" prefWidth="206.0">
+                    <columns>
+                      <TableColumn fx:id="category_view1" prefWidth="75.0" text="Category" />
+                      <TableColumn fx:id="equip_num_view2" prefWidth="134.0" text="# of Equipments " />
+                    </columns>
+                  </TableView>
+                  <TextArea fx:id="equip_cat_show" layoutX="897.0" layoutY="530.0" prefHeight="117.0" prefWidth="205.0" />
+                  <Button fx:id="show_details" layoutX="740.0" layoutY="141.0" mnemonicParsing="false" onAction="#showDetails" prefHeight="17.0" prefWidth="116.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="SHOW DETAILS">
+                     <font>
+                        <Font name="Arial Black" size="11.5" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="input_emp_type" layoutX="50.0" layoutY="648.0" prefHeight="25.0" prefWidth="146.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="flowchart" layoutX="14.0" prefHeight="714.0" prefWidth="1096.0" visible="false">
+               <children>
+                  <Text layoutX="230.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAVAO ORIENTAL STATE UNIVERSITY" wrappingWidth="554.953125">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="344.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(INVENTORY FLOWCHART)" wrappingWidth="271.953125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="106.0" fitWidth="116.0" layoutX="102.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pictures/logo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="equip_num_table" layoutX="5.0" layoutY="148.0" prefHeight="275.0" prefWidth="178.0">
+                    <columns>
+                      <TableColumn fx:id="equip_name_view3" prefWidth="111.0" text="Equipment Name" />
+                      <TableColumn fx:id="equip_num_view" prefWidth="66.0" text="# of Equip" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="equip_table_shown1" layoutX="765.0" layoutY="123.0" prefHeight="276.0" prefWidth="333.0">
+                    <columns>
+                      <TableColumn fx:id="equip_id_shown1" prefWidth="61.0" text="Equip ID" />
+                      <TableColumn fx:id="equip_name_shown1" prefWidth="88.0" text="Equip Name" />
+                        <TableColumn fx:id="equip_desc_shown1" prefWidth="109.0" text="Equip Description" />
+                        <TableColumn fx:id="equip_status_shown1" prefWidth="73.0" text="Status" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="show_details1" layoutX="953.0" layoutY="422.0" mnemonicParsing="false" onAction="#showDetails" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="SHOW DETAILS">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="emp_guard_table_view" layoutX="427.0" layoutY="461.0" prefHeight="137.0" prefWidth="273.0">
+                     <columns>
+                        <TableColumn fx:id="emp_id_shown" prefWidth="54.0" text="Emp ID" />
+                        <TableColumn fx:id="emp_guard_view" prefWidth="152.0" text="Employee in Charge" />
+                        <TableColumn fx:id="equip_num_view3" prefWidth="66.0" text="# of Equip" />
+                     </columns>
+                  </TableView>
+                  <TextArea fx:id="equip_emp_shown" layoutX="427.0" layoutY="597.0" prefHeight="107.0" prefWidth="274.0" />
+                  <TableView fx:id="equip_date_shown" layoutX="706.0" layoutY="461.0" prefHeight="245.0" prefWidth="394.0">
+                     <columns>
+                        <TableColumn fx:id="equip_id_shown2" prefWidth="57.0" text="Equip ID" />
+                        <TableColumn fx:id="equip_name_shown2" prefWidth="94.0" text="Equip Name" />
+                        <TableColumn fx:id="equip_desc_shown2" prefWidth="107.0" text="Equip Description" />
+                        <TableColumn fx:id="invent_date_shown" prefWidth="135.0" text="Inventory Date" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="search3" layoutX="28.0" layoutY="123.0" prefHeight="25.0" prefWidth="148.0" promptText="Search" />
+                  <TextField fx:id="search4" layoutX="455.0" layoutY="434.0" prefHeight="25.0" prefWidth="175.0" promptText="Search" />
+                  <TextField fx:id="search5" layoutX="737.0" layoutY="434.0" prefHeight="25.0" prefWidth="175.0" promptText="Search" />
+                  <BarChart fx:id="equip_status_table" layoutX="169.0" layoutY="94.0" prefHeight="329.0" prefWidth="605.0" title="EQUIPMENT STATUS">
+                    <xAxis>
+                      <CategoryAxis prefWidth="548.0" side="BOTTOM" fx:id="xCategoryAxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yNumberAxis" side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <PieChart fx:id="room_pie_chart" layoutY="423.0" prefHeight="231.0" prefWidth="225.0" />
+                  <PieChart fx:id="cat_pie_chart" layoutX="169.0" layoutY="461.0" prefHeight="224.0" prefWidth="266.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="room_pane" layoutX="14.0" layoutY="1.0" prefHeight="713.0" prefWidth="1111.0" visible="false">
+               <children>
+                  <Text layoutX="265.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAVAO ORIENTAL STATE UNIVERSITY" wrappingWidth="554.953125">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="419.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(INVENTORY ROOM)" wrappingWidth="213.953125">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="106.0" fitWidth="116.0" layoutX="125.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pictures/logo.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="room_table_view" layoutX="45.0" layoutY="162.0" prefHeight="295.0" prefWidth="445.0">
+                    <columns>
+                      <TableColumn fx:id="room_id_view1" prefWidth="75.0" text="Room ID" />
+                      <TableColumn fx:id="room_name_view1" prefWidth="75.0" text="Room Name" />
+                        <TableColumn fx:id="room_type_view1" prefWidth="127.0" text="Room Type" />
+                        <TableColumn fx:id="equip_num_view6" prefWidth="75.0" text="# of Equip" />
+                        <TableColumn fx:id="room_status_view1" prefWidth="90.0" text="Status" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="equip_num_table1" layoutX="500.0" layoutY="163.0" prefHeight="294.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="equip_name_view4" prefWidth="111.0" text="Equipment Name" />
+                      <TableColumn fx:id="equip_num_view7" prefWidth="88.0" text="# of Equip" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="equip_table_shown2" layoutX="712.0" layoutY="163.0" prefHeight="295.0" prefWidth="371.0">
+                    <columns>
+                      <TableColumn fx:id="equip_id_shown3" prefWidth="75.0" text="Equip ID" />
+                      <TableColumn fx:id="equip_name_shown3" prefWidth="107.0" text="Equip Name" />
+                        <TableColumn fx:id="equip_desc_shown3" prefWidth="107.0" text="Equip Description" />
+                        <TableColumn fx:id="equip_status_shown3" prefWidth="81.0" text="Status" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="input_room_id" editable="false" layoutX="78.0" layoutY="490.0" prefHeight="25.0" prefWidth="94.0" />
+                  <TextField fx:id="input_room_name" layoutX="78.0" layoutY="540.0" prefHeight="25.0" prefWidth="119.0" />
+                  <ChoiceBox fx:id="input_room_type" layoutX="78.0" layoutY="589.0" prefWidth="150.0" />
+                  <Text layoutX="102.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID" />
+                  <Text layoutX="104.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Name" />
+                  <Text layoutX="107.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type" />
+                  <TableView fx:id="category_table_view1" layoutX="877.0" layoutY="466.0" prefHeight="129.0" prefWidth="206.0">
+                     <columns>
+                        <TableColumn fx:id="category_view2" prefWidth="75.0" text="Category" />
+                        <TableColumn fx:id="equip_num_view4" prefWidth="134.0" text="# of Equipments " />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="emp_guard_table_view1" layoutX="354.0" layoutY="508.0" prefHeight="176.0" prefWidth="273.0">
+                     <columns>
+                        <TableColumn fx:id="emp_id_shown1" prefWidth="54.0" text="Emp ID" />
+                        <TableColumn fx:id="emp_guard_view1" prefWidth="152.0" text="Employee in Charge" />
+                        <TableColumn fx:id="equip_num_view5" prefWidth="66.0" text="# of Equip" />
+                     </columns>
+                  </TableView>
+                  <TextArea fx:id="equip_emp_shown1" layoutX="633.0" layoutY="508.0" prefHeight="176.0" prefWidth="236.0" />
+                  <TextArea fx:id="equip_cat_show1" layoutX="878.0" layoutY="593.0" prefHeight="101.0" prefWidth="205.0" />
+                  <ChoiceBox fx:id="input_room_status" layoutX="78.0" layoutY="643.0" prefWidth="150.0" />
+                  <Text layoutX="107.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Status" />
+                  <Button fx:id="show_details3" layoutX="711.0" layoutY="468.0" mnemonicParsing="false" onAction="#showDetails" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="SHOW DETAILS">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="edit_room" layoutX="255.0" layoutY="577.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="EDIT">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="add_room" layoutX="255.0" layoutY="536.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white;" text="ADD">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="search6" layoutX="125.0" layoutY="127.0" prefHeight="25.0" prefWidth="183.0" promptText="Search" />
+                  <TextField fx:id="search7" layoutX="391.0" layoutY="476.0" prefHeight="25.0" prefWidth="183.0" promptText="Search" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

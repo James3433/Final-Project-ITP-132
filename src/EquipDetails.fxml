@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EquipDetailsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0084ff" height="78.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="513.0" />
+      <TextField fx:id="property_num_shown" editable="false" layoutX="50.0" layoutY="164.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="pir_num_shown" editable="false" layoutX="50.0" layoutY="214.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="category_shown" editable="false" layoutX="50.0" layoutY="268.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="room_shown" editable="false" layoutX="50.0" layoutY="319.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="emp_in_charge_shown" editable="false" layoutX="50.0" layoutY="369.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="equip_id_shown" editable="false" layoutX="50.0" layoutY="115.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="equip_name_shown" editable="false" layoutX="288.0" layoutY="115.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="equip_used_shown" editable="false" layoutX="288.0" layoutY="214.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="equip_user_shown" editable="false" layoutX="288.0" layoutY="268.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="amount_shown" editable="false" layoutX="288.0" layoutY="319.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="status_shown" editable="false" layoutX="288.0" layoutY="369.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="equip_desc_shown" editable="false" layoutX="287.0" layoutY="164.0" prefHeight="25.0" prefWidth="181.0" />
+      <Text layoutX="104.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment ID" />
+      <Text layoutX="104.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property No#" />
+      <Text layoutX="126.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIR#" />
+      <Text layoutX="114.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+      <Text layoutX="122.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room" />
+      <Text layoutX="85.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee In Charge" />
+      <Text layoutX="342.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Name" />
+      <Text layoutX="334.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Used" />
+      <Text layoutX="336.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment User" />
+      <Text layoutX="357.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
+      <Text layoutX="362.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+      <Text layoutX="317.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Description" />
+      <Text layoutX="107.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Details">
+         <font>
+            <Font name="Arial Black" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="invent_date_shown" editable="false" layoutX="50.0" layoutY="420.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="last_date_shown" editable="false" layoutX="288.0" layoutY="420.0" prefHeight="25.0" prefWidth="181.0" />
+      <Text layoutX="98.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Date" />
+      <Text layoutX="324.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Last Change" />
+   </children>
+</AnchorPane>
