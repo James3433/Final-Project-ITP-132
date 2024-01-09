@@ -6,6 +6,7 @@ LOGIN PANE
 
 
 SYSTEM PANE
+
      FLOWCHART PANE
 
   ![20240109_220109](https://github.com/James3433/Final-Project-ITP-133/assets/125450319/f6fb937d-a724-4c86-bd4c-69b5358ba198)
@@ -27,10 +28,10 @@ SYSTEM PANE
   ![20240109_220252](https://github.com/James3433/Final-Project-ITP-133/assets/125450319/8c0fbf8e-8262-40e0-b117-e68b3519efd4)
 
 GROUP: 
-   James Adam Boncales
-   Leo Niel Agner 
-   John Michael Megrinio
-   Cristan Jaycob Estalane
+   James Adam Boncales;
+   Leo Niel Agner; 
+   John Michael Megrinio;
+   Cristan Jaycob Estalane;
 
 
 
