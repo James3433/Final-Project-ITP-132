@@ -145,7 +145,7 @@ public class ChangerController {
             case "4":
                 return "Defective";
             case "5":
-                return "Emp Transfered";
+                return "Transfered to";
             case "6":
                 return "Room Transfered";
             default:
@@ -170,7 +170,7 @@ public class ChangerController {
     @FXML
     public void handleStatusSelection(ActionEvent event) {
         String status = input_status.getValue();
-     if(!(status.equals("Available") || status.equals("Emp Transfered") || status.equals("Room Transfered"))){
+     if(!(status.equals("Available") || status.equals("Transfered to") || status.equals("Room Transfered"))){
             input_emp_in_charge.setDisable(true);
         if ("Return to Main".equals(status)) {
             // If "Return to Main" is selected, set room and emp choice boxes to empty
@@ -191,7 +191,7 @@ public class ChangerController {
     public void handleEmpSelection(ActionEvent event) {
         String emp = input_emp_in_charge.getValue();
          if(!(emp.equals(equipment.getEmp_in_charge()) || emp.equals("Empty"))){
-             input_status.setValue("Emp Transfered");
+             input_status.setValue("Transfered to");
              input_status.setDisable(true);
          }else if(input_status.getValue().equals("Emp Transfered")){
              input_status.setValue("Available");
@@ -263,7 +263,7 @@ private int mapStatusToInt(String status) {
             return 3;
         case "Defective":
             return 4;
-        case "Emp Transfered":
+        case "Transfered to":
             return 5;
         case "Room Transfered":
             return 6;

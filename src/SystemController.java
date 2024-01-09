@@ -513,7 +513,7 @@ public class SystemController {
     private int equipmentCount;
     private int employeeCount;
     private int roomCount;
-    private String[] statusBox = {"All","Available","Unavailable","Missing","Return to Main","Defective","Emp Transfered","Room Transfered"};
+    private String[] statusBox = {"All","Available","Unavailable","Missing","Return to Main","Defective","Transfered to","Room Transfered"};
     private String[] statusBox1 = {"All","Available","Unavailable","Missing","Return to Main","Defective"};
     private String[] statusBox2 = {"Active","Inactive","Retired"};
     private String[] statusBox3 = {"Available","Unavailable"};
@@ -679,7 +679,7 @@ public class SystemController {
             Employee selectedEmployee = newSelection;
 
                 // Fetch related equipment information
-                equipmentData = sqlConnector.getEquipmentForEmployee(selectedEmployee.getEmp_id());
+            equipmentData = sqlConnector.getEquipmentForEmployee(selectedEmployee.getEmp_id());
 
                 // Update equip_table_showm with the fetched equipment information
                 equip_table_showm.setItems(equipmentData);
@@ -690,41 +690,24 @@ public class SystemController {
                 equip_desc_shown.setCellValueFactory(new PropertyValueFactory<Equipment, String>("equip_desc"));
                    
             // A row is selected, update the input fields with the selected employee's data
+        input_emp_status.setVisible(true);
+        System.out.println("ID: "+selectedEmployee.getEmp_id());
+        List<List<String>> employeeList = sqlConnector.getEmployees(selectedEmployee.getEmp_id());
             
-            input_emp_id.setText(String.valueOf(newSelection.getEmp_id()));
-
-            // Assuming getEmp_name() returns the full name
-            String fullName = newSelection.getEmp_name();
-            
-
-            // Split the full name into first, middle, and last names if needed
-            String[] names = fullName.split("\\s+");
-            if (names.length > 0) {
-                String lastName = names[0].replaceAll(",", ""); // Remove the comma
-                input_emp_lname.setText(lastName); // First name
-            }
-            if (names.length > 1) {
-                input_emp_fname.setText(names[1]); // Middle name
-            }
-            if (names.length > 2) {
-                if(names[2].equals("Jr.") || names[2].equals("Sr.")){
-                   input_emp_sufix.setValue(names[2]);
-                }else{
-                   input_emp_mname.setText(names[2]); // Last name 
-                }
-            }
-            if (names.length > 3) {
-                 input_emp_sufix.setValue(names[3]);
-             }
-            input_emp_age.setText(String.valueOf(newSelection.getEmp_age()));
-            input_emp_type.setValue(newSelection.getEmp_type());
-            input_emp_gender.setValue(newSelection.getEmp_gender());
-            
-            input_emp_status.setVisible(true);
-            input_emp_status.setValue(mapEmpStatus(newSelection.getEmp_status()));
+        for (List<String> emp : employeeList) {
+            input_emp_id.setText(String.valueOf(emp.get(0)));
+            input_emp_fname.setText(String.valueOf(emp.get(1)));
+            input_emp_mname.setText(String.valueOf(emp.get(2)));
+            input_emp_lname.setText(String.valueOf(emp.get(3)));
+            input_emp_sufix.setValue(String.valueOf(emp.get(4)));
+            input_emp_age.setText(String.valueOf(emp.get(5)));
+            input_emp_gender.setValue(String.valueOf(emp.get(6)));
+            input_emp_type.setValue(String.valueOf(emp.get(7)));
+            input_emp_status.setValue(mapEmpStatus(String.valueOf(emp.get(8))));
+    }
+        
             // Show the edit_emp button
             edit_emp.setVisible(true);
-            input_emp_status.setVisible(true);
         }else {
             // No row is selected, clear the input fields and hide the edit_emp button
             clearInputFields();
@@ -1039,6 +1022,7 @@ private void updateEmpEquipmentTextArea(int empId) {
             // Clear input fields
             clearInputFields();
             // Refresh the TableView after adding data   
+            JOptionPane.showMessageDialog(null, "Added Succefully");
             refreshTables();
     }
 }
@@ -1066,7 +1050,7 @@ private void updateEmpEquipmentTextArea(int empId) {
             return; // Exit the method without adding the equipment
         }
         int empAge = Integer.parseInt(input_emp_age.getText());
-        if (sqlConnector.isEmployeeAlreadyExists(empId, empFname,empMname, empLname)) {
+        if (sqlConnector.isEmployeeAlreadyExists(empId, empFname,empMname, empLname, empSuffix)) {
             JOptionPane.showMessageDialog(null, "First name, Middle Name and Last name already exists.");
         } else {
             
@@ -1103,16 +1087,12 @@ private void updateEmpEquipmentTextArea(int empId) {
         String empGender = input_emp_gender.getValue();
         String empStatus = mapEmpStatusToInt(input_emp_status.getValue());
         
-        if(empId <= empCount){
-            JOptionPane.showMessageDialog(null, "Employee ID exist. Try Again");
-            return;
-        }
         if (!(Age.matches("\\d*"))) {
             JOptionPane.showMessageDialog(null, "Invalid input for amount. Please enter a valid number.");
             return; // Exit the method without adding the equipment
         }
         int empAge = Integer.parseInt(input_emp_age.getText());
-    if (sqlConnector.isEmployeeAlreadyExists(empId, empFname, empMname, empLname)) {
+    if (sqlConnector.isEmployeeAlreadyExists(empId, empFname, empMname, empLname, empSuffix)) {
             JOptionPane.showMessageDialog(null, "First name, Middle Name and Last name already exists.");
         } else { 
         // Call the updateEmployee method from SQLconnector
@@ -1366,7 +1346,7 @@ private void updateEmpEquipmentTextArea(int empId) {
                         setText("Defective");
                         setStyle("-fx-text-fill: red;");
                     } else if (item.equals("5")) {
-                        setText("Emp Transfered");
+                        setText("Transfered to");
                         setStyle("-fx-text-fill: orange;");
                     } else if (item.equals("6")) {
                         setText("Room Transfered");
@@ -1721,6 +1701,7 @@ private void updateEmpEquipmentTextArea(int empId) {
         boolean searchTextMatch = searchText.equals("defaultText") || searchText.trim().isEmpty() ||
                 (String.valueOf(status.getEquip_id()).contains(searchTextLower) ||
                  status.getEquip_name().toLowerCase().contains(searchTextLower) ||
+                status.getEquip_desc().toLowerCase().contains(searchTextLower) ||
                  status.getPhysical_date().toLowerCase().contains(searchTextLower) ||
                  status.getRoom().toLowerCase().contains(searchTextLower) ||
                  status.getEmp_in_charge().toLowerCase().contains(searchTextLower));
@@ -1820,12 +1801,6 @@ private void updateEmpEquipmentTextArea(int empId) {
 }
    
     public void refreshTables() {
-        
-    input_equip_id.setText(String.valueOf(2021100 + equipmentCount + 1));
-    
-    input_emp_id.setText(String.valueOf(2021010 + employeeCount + 1));
-        
-    input_room_id.setText(String.valueOf(roomCount + 1));
     
     search.clear();
     search1.clear();
@@ -1859,6 +1834,7 @@ private void updateEmpEquipmentTextArea(int empId) {
     emp_table_view.setItems(empData);
     room_table_view.setItems(roomData);
     equip_num_table.setItems(countData);
+    equip_num_table1.setItems(countData);
     equip_date_shown.setItems(equipDate);
     equip_status_table.getData().addAll(barChartData);
     equip_room_table.setItems(roomCountData);
@@ -1869,6 +1845,15 @@ private void updateEmpEquipmentTextArea(int empId) {
     room_pie_chart.setData(pieChartRoom);
     cat_pie_chart.setData(pieChartCat);
     input_emp_in_charge.getItems().addAll(empInChargeList);
+    
+    equipmentCount = equipmentData.size();
+    employeeCount = empData.size();  
+    roomCount = roomData.size();
+    
+    input_equip_id.setText(String.valueOf(2021100 + equipmentCount + 1));
+    input_emp_id.setText(String.valueOf(2021010 + employeeCount + 1));  
+    input_room_id.setText(String.valueOf(roomCount + 1));
+    
 }
 
     private void clearInputFields() {

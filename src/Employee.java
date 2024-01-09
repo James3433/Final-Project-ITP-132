@@ -10,7 +10,11 @@
  */
 public class Employee {
     private int emp_id;
-    private String emp_name;
+    private String emp_name; 
+    private String emp_fname;
+    private String emp_mname;
+    private String emp_lname;
+    private String emp_suffix;
     private int emp_age;
     private String emp_gender;
     private String emp_type;
@@ -34,6 +38,22 @@ public String toString() {
 
     public String getEmp_name() {
         return emp_name;
+    }
+
+    public String getEmp_fname() {
+        return emp_fname;
+    }
+
+    public String getEmp_mname() {
+        return emp_mname;
+    }
+
+    public String getEmp_lname() {
+        return emp_lname;
+    }
+
+    public String getEmp_suffix() {
+        return emp_suffix;
     }
 
     public int getEmp_age() {
@@ -86,6 +106,22 @@ public String toString() {
         this.emp_name = emp_name;
     }
 
+    public void setEmp_fname(String emp_fname) {
+        this.emp_fname = emp_fname;
+    }
+
+    public void setEmp_mname(String emp_mname) {
+        this.emp_mname = emp_mname;
+    }
+
+    public void setEmp_lname(String emp_lname) {
+        this.emp_lname = emp_lname;
+    }
+
+    public void setEmp_suffix(String emp_suffix) {
+        this.emp_suffix = emp_suffix;
+    }
+
     public void setEmp_age(int emp_age) {
         this.emp_age = emp_age;
     }
@@ -124,6 +160,18 @@ public String toString() {
 
     public void setRoom_status(String room_status) {
         this.room_status = room_status;
+    }
+
+    public Employee(int emp_id, String emp_fname, String emp_mname, String emp_lname, String emp_suffix, int emp_age, String emp_gender, String emp_type, String emp_status) {
+        this.emp_id = emp_id;
+        this.emp_fname = emp_fname;
+        this.emp_mname = emp_mname;
+        this.emp_lname = emp_lname;
+        this.emp_suffix = emp_suffix;
+        this.emp_age = emp_age;
+        this.emp_gender = emp_gender;
+        this.emp_type = emp_type;
+        this.emp_status = emp_status;
     }
 
     

@@ -351,7 +351,7 @@ public class SQLconnector {
 
     return roomNames;
 }
-
+ 
     public ObservableList<String> getEmployeeNames() {
         ObservableList<String> empNamesList = FXCollections.observableArrayList();
         conn = getConnection();
@@ -422,6 +422,33 @@ public class SQLconnector {
         return -1;
     }
 
+    public List<List<String>> getEmployees(int empId) {
+       List<List<String>> employeeList = new ArrayList<>();
+        conn = getConnection();
+
+        try {
+            ps = conn.prepareStatement("SELECT * FROM employee WHERE emp_id = ?;");
+            ps.setInt(1, empId);
+            ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            List<String> emp = new ArrayList<>();
+             emp.add(rs.getString("emp_id"));
+             emp.add(rs.getString("emp_fname"));
+             emp.add(rs.getString("emp_mname"));
+             emp.add(rs.getString("emp_lname"));
+             emp.add(rs.getString("emp_suffix"));
+             emp.add(rs.getString("emp_age"));
+             emp.add(rs.getString("emp_gender"));
+             emp.add(rs.getString("emp_type"));
+             emp.add(rs.getString("emp_status"));
+             employeeList.add(emp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employeeList;
+    }
+    
     public int getCategoryIdByName(String categoryName) {
     conn = getConnection();
     try {
@@ -863,15 +890,16 @@ public List<List<String>> getEquipmentByEmp(int empId) {
         }
     }
     
-    public boolean isEmployeeAlreadyExists( int empId, String fname, String mname, String lname) {
+    public boolean isEmployeeAlreadyExists( int empId, String fname, String mname, String lname, String suffix) {
     boolean exists = false;
-    String query = "SELECT emp_id FROM employee WHERE emp_id != ? AND (emp_fname = ? AND emp_lname = ? AND (emp_mname = ? OR emp_mname IS NULL))";
+    String query = "SELECT emp_id FROM employee WHERE emp_id != ? AND (emp_fname = ? AND emp_lname = ? AND (emp_mname = ? OR emp_mname IS NULL) AND (emp_suffix = ? OR emp_suffix IS NULL))";
     try (Connection connection = getConnection();
          PreparedStatement preparedStatement = connection.prepareStatement(query)) {
         preparedStatement.setInt(1, empId);
         preparedStatement.setString(2, fname);
         preparedStatement.setString(3, lname);
         preparedStatement.setString(4, mname);
+        preparedStatement.setString(5, suffix);
         ResultSet resultSet = preparedStatement.executeQuery();
         exists = resultSet.next();
     } catch (SQLException e) {

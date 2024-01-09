@@ -7,7 +7,7 @@
  *
  * @author Admin
  */
-public class Equipment {
+public class Equipment {       
     private int equip_id;
     private String equip_name;
     private String room;
@@ -172,7 +172,7 @@ public class Equipment {
         this.property_num = "------------";
         this.pir_num = "------------";
         this.status = status;
-        this.equip_desc = "------------";
+        this.equip_desc = "-------------";
         this.amount = "------------";
         }
         
@@ -191,13 +191,13 @@ public class Equipment {
         this.status = status;
     }
 
-    public Equipment(int equip_id, String equip_name, String room, String equip_used, String Equip_user, String category, String emp_in_charge, String status, String property_num, String pir_num, String equip_desc, String amount, String first_date, String last_date) {
+    public Equipment(int equip_id, String equip_name, String room, String equip_used, String equip_user, String category, String emp_in_charge, String status, String property_num, String pir_num, String equip_desc, String amount, String first_date, String last_date) {
         
         this.equip_id = equip_id;
         this.equip_name = equip_name;
         this.room = room;
         this.equip_used = equip_used;
-        this.Equip_user = Equip_user;
+        this.Equip_user = equip_user;
         this.category = category;
         this.emp_in_charge = emp_in_charge;
         this.status = status;

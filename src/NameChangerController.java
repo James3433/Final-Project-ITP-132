@@ -35,7 +35,7 @@ public class NameChangerController {
     private TextField input_equip_name;
     
     @FXML
-    private TextField input_equip_desc;
+    private TextField input_equip_asc;
 
     @FXML
     private TextField input_equip_used;
@@ -78,7 +78,7 @@ public class NameChangerController {
         input_property_num.setText(equipment.getProperty_num());
         input_pir_num.setText(equipment.getPir_num());
         input_equip_name.setText(equipment.getEquip_name());
-        input_equip_desc.setText(equipment.getEquip_desc());
+        input_equip_asc.setText(equipment.getEquip_desc());
         input_equip_used.setText(equipment.getEquip_used());
         input_equip_user.setText(equipment.getEquip_user());
         input_amount.setText(equipment.getAmount());
@@ -89,7 +89,7 @@ public class NameChangerController {
     public void handleOkButton(ActionEvent eve) {
         System.out.println("button Clicked");
         if (equipment != null) {
-            if (input_equip_id.getText().isEmpty() || input_pir_num.getText().isEmpty()|| input_property_num.getText().isEmpty() || input_equip_name.getText().isEmpty() || input_equip_desc.getText().isEmpty() || input_equip_used.getText().isEmpty() || input_equip_user.getText().isEmpty()|| input_amount.getText().isEmpty() || input_category.getValue() == null) {
+            if (input_equip_id.getText().isEmpty() || input_pir_num.getText().isEmpty()|| input_property_num.getText().isEmpty() || input_equip_name.getText().isEmpty() || input_equip_asc.getText().isEmpty() || input_equip_used.getText().isEmpty() || input_equip_user.getText().isEmpty()|| input_amount.getText().isEmpty() || input_category.getValue() == null) {
             JOptionPane.showMessageDialog(null, "Must Input all needed data");
             } else {
             try {
@@ -98,7 +98,7 @@ public class NameChangerController {
                 String propertyNum = input_property_num.getText();
                 String pirNum = input_pir_num.getText();
                 String equipName = input_equip_name.getText();
-                String equipDesc = input_equip_desc.getText();
+                String equipAsc = input_equip_asc.getText();
                 String equipUsed = input_equip_used.getText();
                 String equipUser = input_equip_user.getText();
                 String amount = input_amount.getText();
@@ -106,7 +106,7 @@ public class NameChangerController {
                 
                 int categoryId = sqlConnector.getCategoryIdByName(selectedCategory);
                 // Call the update method in SystemController or another data management class
-                 sqlConnector.updateEquipmentName(equipId, propertyNum, pirNum, equipName, equipDesc,equipUsed, equipUser, amount,categoryId);
+                 sqlConnector.updateEquipmentName(equipId, propertyNum, pirNum, equipName, equipAsc,equipUsed, equipUser, amount,categoryId);
 
             systemController.refreshTables();
             // Close the stage

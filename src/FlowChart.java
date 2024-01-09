@@ -10,7 +10,7 @@
 public class FlowChart {
     private int equip_id;
     private String equip_name;
-    private String equip_desc;
+    private String equip_asc;
     private int available;
     private int unavailable;
     private int missing;
@@ -62,7 +62,7 @@ public class FlowChart {
     }
     
     public String getEquip_desc() {
-        return equip_desc;
+        return equip_asc;
     }
     
     public String getFirst_date() {
@@ -110,8 +110,8 @@ public class FlowChart {
         this.id = id;
     }
     
-    public void setEquip_desc(String equip_desc) {
-        this.equip_desc = equip_desc;
+    public void setEquip_desc(String equip_asc) {
+        this.equip_asc = equip_asc;
     }
     
     public void setFirst_date(String first_date) {
@@ -128,10 +128,10 @@ public class FlowChart {
         this.defective = defective;
     }
     
-    public FlowChart(int equip_id, String equip_name, String equip_desc, String first_date) {
+    public FlowChart(int equip_id, String equip_name, String equip_asc, String first_date) {
         this.equip_id = equip_id;
         this.equip_name = equip_name;
-        this.equip_desc = equip_desc;
+        this.equip_asc = equip_asc;
         this.first_date = first_date;
     }
     
